@@ -26,8 +26,6 @@ public class LoginController {
 
 	@PostMapping(path="/")
 	public String getUserTweets(@ModelAttribute String username, @ModelAttribute String password) {
-
-//		To Do
 		
 		return "redirect:/home";
 	}

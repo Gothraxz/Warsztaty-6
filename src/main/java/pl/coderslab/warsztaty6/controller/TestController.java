@@ -13,7 +13,7 @@ import pl.coderslab.warsztaty6.entity.User;
 import pl.coderslab.warsztaty6.repository.UserRepository;
 
 @Controller
-@RequestMapping(path="/test")
+@RequestMapping(path="/tweeter/test")
 public class TestController {
 
 	@Autowired

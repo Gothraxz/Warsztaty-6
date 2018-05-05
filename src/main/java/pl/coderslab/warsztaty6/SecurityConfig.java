@@ -1,7 +1,5 @@
 package pl.coderslab.warsztaty6;
 
-
-
 import java.util.logging.Handler;
 
 import javax.servlet.ServletException;
@@ -39,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 	  http
 	  .authorizeRequests()
-	  	.antMatchers("/test/**")
+	  	.antMatchers("/tweeter/**")
 	  		.authenticated()
 	  	.and()
 	  		.authorizeRequests()

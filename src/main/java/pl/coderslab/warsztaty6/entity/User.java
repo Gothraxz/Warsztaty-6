@@ -41,7 +41,10 @@ public class User {
 	private List<Comment> comments = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Message> messages = new ArrayList<>();
+	private List<Message> messagesSent = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Message> messagesReceived = new ArrayList<>();
 
 	public long getId() {
 		return id;
@@ -99,14 +102,21 @@ public class User {
 		this.comments = comments;
 	}
 
-	public List<Message> getMessages() {
-		return messages;
+	public List<Message> getMessagesSent() {
+		return messagesSent;
 	}
 
-	public void setMessages(List<Message> messages) {
-		this.messages = messages;
+	public void setMessagesSent(List<Message> messagesSent) {
+		this.messagesSent = messagesSent;
 	}
-	
-	
+
+	public List<Message> getMessagesReceived() {
+		return messagesReceived;
+	}
+
+	public void setMessagesReceived(List<Message> messagesReceived) {
+		this.messagesReceived = messagesReceived;
+	}
+
 	
 }

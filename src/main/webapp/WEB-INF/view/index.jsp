@@ -10,5 +10,35 @@
 </head>
 <body>
 
+	<div align="right"> <a href="to do"><button>Login</button></a> </div>
+
+	<h3>What's new...</h3>
+	
+	<table style="border: 1px solid black; text-align: center" >
+		<tr>
+			<th>User:</th>
+			<th>Created:</th>
+			<th>Tweet:</th>
+			<th>Action:</th>
+		</tr>
+	
+		<c:forEach items = "${tweetItems}" var = "user">
+			<tr>
+				<td>
+				<c:out value = "${tweet.user.username}"/>
+				</td>
+				<td>
+				<c:out value = "${tweet.created}"/>
+				</td>
+				<td>
+				<c:out value = "${tweet.text}"/>
+				</td>
+				<td>
+				<a href="to do"><button>Send message</button></a>   <a href="to do"><button>Comment</button></a>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+
 </body>
 </html>
