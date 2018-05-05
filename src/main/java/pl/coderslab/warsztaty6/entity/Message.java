@@ -10,7 +10,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "tweeter_message")
 public class Message {
 
 	@Id

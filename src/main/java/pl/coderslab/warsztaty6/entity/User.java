@@ -14,7 +14,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "tweeter_user")
+@Table(name = "users")
 public class User {
 
 	@Id
@@ -34,13 +34,13 @@ public class User {
 	@Email
 	private String email;
 	
-	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Tweet> tweets = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Comment> comments = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Message> messages = new ArrayList<>();
 
 	public long getId() {

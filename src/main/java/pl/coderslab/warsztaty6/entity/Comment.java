@@ -15,7 +15,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "tweeter_comment")
 public class Comment {
 
 	@Id
