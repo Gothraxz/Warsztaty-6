@@ -37,4 +37,47 @@ public class Comment {
 	@NotEmpty
 	@Size(max = 60)
 	private String text;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Tweet getPost() {
+		return post;
+	}
+
+	public void setPost(Tweet post) {
+		this.post = post;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+	
+	
+	
 }
