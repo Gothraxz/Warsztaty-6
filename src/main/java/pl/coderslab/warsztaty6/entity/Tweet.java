@@ -36,7 +36,7 @@ public class Tweet {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
 	
-	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Comment> comments = new ArrayList<>();
 
 	public long getId() {

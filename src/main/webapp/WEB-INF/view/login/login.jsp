@@ -19,6 +19,7 @@
 	<form:errors path="username" />
 	<br>
 	Password:
+	<br>
 	<form:input path="password" />
 	<form:errors path="password" />
 	<br>

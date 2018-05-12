@@ -23,29 +23,55 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	DataSource dataSource;
+
+    @Autowired
+    private AccessDeniedHandler accessDeniedHandler;
 	
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {	
-	  auth
-	  .jdbcAuthentication()
-	  .dataSource(dataSource)
-		.usersByUsernameQuery(
-			"select username,password, enabled from users where username=?");
+//	  auth
+//	  .jdbcAuthentication()
+//	  .dataSource(dataSource)
+//		.usersByUsernameQuery(
+//			"select username,password, enabled from users where username=?");
+	  
+      auth.inMemoryAuthentication()
+      .withUser("user").password("{noop}password").roles("USER")
+      .and()
+      .withUser("admin").password("{noop}password").roles("ADMIN"); 
+      
 	}	
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	  http
-	  .authorizeRequests()
-	  	.antMatchers("/tweeter/**")
-	  		.authenticated()
-	  	.and()
-	  		.authorizeRequests()
-	  		.antMatchers("/login/")
-	  		.permitAll()
-	  		.anyRequest()
-	  		.anonymous()
-	  	.and()
-	  		.exceptionHandling().accessDeniedPage("/login/?denied");
+//	  http
+//	  .authorizeRequests()
+//	  	.antMatchers("/tweeter/**")
+//	  		.authenticated()
+//	  	.and()
+//	  		.authorizeRequests()
+//	  		.antMatchers("/login/")
+//	  		.permitAll()
+//	  		.anyRequest()
+//	  		.anonymous()
+//	  	.and()
+//	  		.exceptionHandling().accessDeniedPage("/login/?denied");
+	  
+      http.csrf().disable()
+      .authorizeRequests()
+      .antMatchers("/", "/home", "/about").permitAll()
+      .antMatchers("/admin/**").hasAnyRole("ADMIN")
+      .antMatchers("/user/**", "/tweeter/**").hasAnyRole("USER")
+      .anyRequest().authenticated()
+      .and()
+      .formLogin()
+      .loginPage("/login/")
+      .permitAll()
+      .and()
+      .logout()
+      .permitAll()
+      .and()
+      .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+	  
 	}
 }
